@@ -1,0 +1,101 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Controle porta",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2109e553.b3815a",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Open",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "66602999.753788"
+            ]
+        ]
+    },
+    {
+        "id": "66602999.753788",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "house:control:door",
+        "qos": "0",
+        "retain": "",
+        "broker": "6a63db89.8eeaf4",
+        "x": 370,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "30d3fd75.5c8e22",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "Close",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "66602999.753788"
+            ]
+        ]
+    },
+    {
+        "id": "6a63db89.8eeaf4",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

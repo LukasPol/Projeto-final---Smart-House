@@ -1,0 +1,227 @@
+[
+    {
+        "id": "f5ceb6e3.2574d8",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5154901b.3bff5",
+        "type": "ui_form",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "label": "",
+        "group": "a072a502.649da8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Usuario",
+                "value": "usuario",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Senha",
+                "value": "senha",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "usuario": "",
+            "senha": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "c5cc1694.e0c9b8",
+                "6f6ff320.b7583c"
+            ]
+        ]
+    },
+    {
+        "id": "c5cc1694.e0c9b8",
+        "type": "function",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "func": "\nvar conta = { usuario: \"admin\", senha: \"admin\"};\n\nif(msg.payload.usuario == conta.usuario && msg.payload.senha == conta.senha){\n    msg.payload = 1;\n\n \n} else {\n     msg.payload = 0;\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "20c12e22.e35f12",
+                "79f14349.913d9c"
+            ]
+        ]
+    },
+    {
+        "id": "6f6ff320.b7583c",
+        "type": "debug",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "20c12e22.e35f12",
+        "type": "debug",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "79f14349.913d9c",
+        "type": "switch",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "31c53b89.d42dd4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8eb8482b.171938",
+        "type": "ui_ui_control",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "events": "all",
+        "x": 520,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "62081817.e46d48",
+        "type": "debug",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "31c53b89.d42dd4",
+        "type": "function",
+        "z": "f5ceb6e3.2574d8",
+        "name": "",
+        "func": "\nmsg.payload = [\n    { group: {\n    hide : [\"Dashboard_Login\"],\n    show : [\"Dashboard_Monitoramento\"]\n    }\n}];\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 660,
+        "y": 180,
+        "wires": [
+            [
+                "8eb8482b.171938",
+                "62081817.e46d48"
+            ]
+        ]
+    },
+    {
+        "id": "eecdc3bd.898cd",
+        "type": "ui_text",
+        "z": "f5ceb6e3.2574d8",
+        "group": "5bd1468a.3ec2a8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 150,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a072a502.649da8",
+        "type": "ui_group",
+        "name": "Login",
+        "tab": "68b577d7.563908",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5bd1468a.3ec2a8",
+        "type": "ui_group",
+        "name": "Monitoramento",
+        "tab": "68b577d7.563908",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "68b577d7.563908",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
